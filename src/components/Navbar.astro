@@ -1,0 +1,53 @@
+---
+import { Icon } from 'astro-icon'
+const navLinks = [
+    {
+        name: 'Home',
+        url: '/',
+        style: 'transparent'
+    },
+    {
+        name: 'Pricing',
+        url: '#',
+        style: 'transparent'
+    },
+    {
+        name: 'About',
+        url: '#',
+        style: 'transparent'
+    },
+    {
+        name: 'Contact Me',
+        url: '#',
+        style: 'transparent'
+    }
+];
+---
+    
+
+    <nav>
+        <div class="container nav-container">
+            <Icon name="vscode-icons:file-type-dylan" width={200} />
+        <div class="nav-wrapper">
+        </div>
+            <button class="btn btn--menu" id="menu-btn" aria-expanded="false" aria-label="Open mobile nav">
+                <Icon name="feather:menu" width={25}/>
+            </button>
+            <ul class="nav-links" role="navigation">
+                {navLinks.map(link => (
+                    <li role="none">
+                        <a href={link.url} class="btn nav-link btn--${link.style}">{link.name}</a>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    </nav>
+
+    <script>
+        const navBtn = document.querySelector('#menu-btn');
+        navBtn.addEventListener('click', () => {
+            navBtn.setAttribute('aria-expanded', navBtn.getAttribute
+                ('aria-expanded') === 'false' ? 'true' : 'false'
+            )
+        })
+    </script>
